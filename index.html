@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>اختبار الاقتصاد التفاعلي - الأسئلة الذهبية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* الثيم الداكن الأساسي */
+    :root[data-theme="dark"] {
+      --bg-main: #0b1120;
+      --bg-card: #172033;
+      --bg-elevated: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #2e3f5c;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --accent-soft: rgba(56, 189, 248, 0.14);
+      --correct: #22c55e;
+      --correct-bg: rgba(34, 197, 94, 0.15);
+      --wrong: #ef4444;
+      --wrong-bg: rgba(239, 68, 68, 0.15);
+      --hint: #f59e0b;
+      --hint-bg: rgba(245, 158, 11, 0.14);
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    /* ثيم مريح للعين (دافئ) */
+    :root[data-theme="eyecare"] {
+      --bg-main: #181512;
+      --bg-card: #241f1a;
+      --bg-elevated: #302922;
+      --text-main: #eee4d5;
+      --text-muted: #b5a68f;
+      --border-color: #453a2f;
+      --accent: #eab308;
+      --accent-hover: #ca8a04;
+      --accent-soft: rgba(234, 179, 8, 0.15);
+      --correct: #4ade80;
+      --correct-bg: rgba(74, 222, 128, 0.14);
+      --wrong: #f87171;
+      --wrong-bg: rgba(248, 113, 113, 0.14);
+      --hint: #fb923c;
+      --hint-bg: rgba(251, 146, 60, 0.15);
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ثيم نهاري هادئ */
+    :root[data-theme="light"] {
+      --bg-main: #f1f5f9;
+      --bg-card: #ffffff;
+      --bg-elevated: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-color: #cbd5e1;
+      --accent: #0284c7;
+      --accent-hover: #0369a1;
+      --accent-soft: rgba(2, 132, 199, 0.1);
+      --correct: #16a34a;
+      --correct-bg: rgba(22, 163, 74, 0.12);
+      --wrong: #dc2626;
+      --wrong-bg: rgba(220, 38, 38, 0.12);
+      --hint: #d97706;
+      --hint-bg: rgba(217, 119, 6, 0.12);
+      --shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.75;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      padding: 20px 14px 50px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .app-wrapper {
+      width: 100%;
+      max-width: 740px;
+    }
+
+    /* شريط علوي بسيط ومرتب */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      gap: 10px;
+    }
+
+    .theme-btn {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.86rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .theme-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* دالة الكسور الرياضية */
+    .math-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 5px;
+      font-weight: 800;
+      line-height: 1.15;
+      direction: ltr;
+    }
+    .math-frac .num {
+      border-bottom: 2px solid currentColor;
+      padding: 0 6px 2px;
+      font-size: 0.92em;
+    }
+    .math-frac .den {
+      padding: 2px 6px 0;
+      font-size: 0.92em;
+    }
+    .math-expr {
+      display: inline-block;
+      direction: ltr;
+      unicode-bidi: embed;
+      font-weight: 800;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 1px 8px;
+      border-radius: 6px;
+      margin: 0 3px;
+    }
+
+    /* الكارت الرئيسي الموحد */
+    .screen-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 1. شاشة البداية */
+    .start-screen {
+      text-align: center;
+      padding: 38px 24px;
+    }
+    .start-icon {
+      font-size: 3.4rem;
+      margin-bottom: 10px;
+    }
+    .start-title {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .start-desc {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      max-width: 540px;
+      margin: 0 auto 24px;
+    }
+    .start-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .feature-pill {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .category-select-wrap {
+      max-width: 420px;
+      margin: 0 auto 16px;
+      text-align: right;
+    }
+    .category-select-wrap label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .cat-select {
+      width: 100%;
+      background: var(--bg-elevated);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+    }
+    .cat-select:focus {
+      border-color: var(--accent);
+    }
+    .start-options {
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .check-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-elevated);
+      padding: 8px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+    .check-label input {
+      accent-color: var(--accent);
+      width: 17px;
+      height: 17px;
+    }
+
+    .main-btn {
+      background: var(--accent);
+      color: #0b1120;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 14px;
+      font-size: 1.1rem;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .main-btn:hover {
+      background: var(--accent-hover);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .main-btn.secondary {
+      background: var(--bg-elevated);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+    .main-btn.secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* 2. شاشة الأسئلة (بالسرة) */
+    .quiz-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      background: var(--bg-elevated);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 22px;
+      border: 1px solid var(--border-color);
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--correct));
+      transition: width 0.3s ease;
+    }
+
+    .question-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.85;
+    }
+
+    .options-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .opt-btn {
+      width: 100%;
+      text-align: right;
+      background: var(--bg-elevated);
+      color: var(--text-main);
+      border: 2px solid var(--border-color);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      line-height: 1.65;
+    }
+    .opt-btn:hover:not(:disabled) {
+      border-color: var(--accent);
+      transform: translateX(-3px);
+    }
+    .opt-btn:disabled {
+      cursor: default;
+    }
+    .opt-char {
+      min-width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .opt-btn.correct {
+      background: var(--correct-bg);
+      border-color: var(--correct);
+    }
+    .opt-btn.correct .opt-char {
+      background: var(--correct);
+      color: #fff;
+      border-color: var(--correct);
+    }
+    .opt-btn.wrong {
+      background: var(--wrong-bg);
+      border-color: var(--wrong);
+    }
+    .opt-btn.wrong .opt-char {
+      background: var(--wrong);
+      color: #fff;
+      border-color: var(--wrong);
+    }
+
+    /* صندوق المدح والرزايل */
+    .feedback-banner {
+      margin-top: 18px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 1.04rem;
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+    .feedback-banner.praise {
+      display: block;
+      background: var(--correct-bg);
+      border: 2px solid var(--correct);
+      color: var(--correct);
+    }
+    .feedback-banner.roast {
+      display: block;
+      background: var(--wrong-bg);
+      border: 2px solid var(--wrong);
+      color: var(--wrong);
+    }
+
+    /* الشرح والتلميح بالأسفل */
+    .explain-card {
+      margin-top: 14px;
+      background: var(--bg-elevated);
+      border-right: 4px solid var(--accent);
+      padding: 14px 16px;
+      border-radius: 12px;
+      font-size: 0.96rem;
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+    .explain-card strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .quiz-footer {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hint-btn {
+      background: var(--hint-bg);
+      color: var(--hint);
+      border: 1px dashed var(--hint);
+      padding: 9px 16px;
+      border-radius: 11px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .hint-box {
+      width: 100%;
+      background: var(--hint-bg);
+      border-right: 4px solid var(--hint);
+      padding: 11px 15px;
+      border-radius: 10px;
+      font-size: 0.93rem;
+      display: none;
+      margin-top: 10px;
+    }
+
+    /* 3. شاشة النتيجة واللقب */
+    .result-screen {
+      text-align: center;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 7px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+    }
+    .status-badge.pass {
+      background: var(--correct-bg);
+      color: var(--correct);
+      border: 2px solid var(--correct);
+    }
+    .status-badge.fail {
+      background: var(--wrong-bg);
+      color: var(--wrong);
+      border: 2px solid var(--wrong);
+    }
+    .big-score {
+      font-size: 3.4rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1.1;
+      margin: 8px 0;
+    }
+    .score-sub {
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .rank-box {
+      background: var(--bg-elevated);
+      border: 2px solid var(--border-color);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .rank-title {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .rank-desc {
+      font-size: 1.02rem;
+      color: var(--text-main);
+    }
+    .result-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    /* 4. شاشة مراجعة الأسئلة والإجابات */
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .filter-tab {
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      padding: 7px 14px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .filter-tab.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .review-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .review-item {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 18px;
+    }
+    .review-item.is-correct {
+      border-right: 5px solid var(--correct);
+    }
+    .review-item.is-wrong {
+      border-right: 5px solid var(--wrong);
+    }
+    .rev-top {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 800;
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+    }
+    .rev-q {
+      font-weight: 800;
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+    }
+    .rev-ans {
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 0.94rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .rev-ans.user-wrong {
+      background: var(--wrong-bg);
+      color: var(--wrong);
+    }
+    .rev-ans.right-ans {
+      background: var(--correct-bg);
+      color: var(--correct);
+    }
+    .rev-exp {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border-color);
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+  <!-- الشريط العلوي للثيم والصوت -->
+  <div class="top-bar">
+    <button class="theme-btn" id="themeBtn" onclick="cycleTheme()">🌙 الثيم: داكن أساسي</button>
+    <button class="theme-btn" id="soundBtn" onclick="toggleSound()">🔊 الصوت: مفعل</button>
+  </div>
+
+  <!-- 1. شاشة البداية -->
+  <div class="screen-card start-screen" id="screenStart">
+    <div class="start-icon">📊</div>
+    <h1 class="start-title">اختبار الاقتصاد - الأسئلة الذهبية</h1>
+    <p class="start-desc">
+      النسخة المكثفة والشاملة لجميع أفكار الملزمة بدون تكرار (الإيراد الكلي والمرونات الخمس، الإيراد الحدي، مرونة القوس، ومرونة النقطة).
+    </p>
+
+    <div class="start-features">
+      <span class="feature-pill">📝 34 سؤالاً ذهبياً مركزاً</span>
+      <span class="feature-pill">💡 تلميح وشرح لكل سؤال</span>
+      <span class="feature-pill">🏆 ألقاب ومراجعة بالنهاية</span>
+    </div>
+
+    <div class="category-select-wrap">
+      <label for="categorySelect">🎯 اختر نطاق الاختبار:</label>
+      <select id="categorySelect" class="cat-select">
+        <option value="all">جميع الأقسام الشاملة (34 سؤالاً)</option>
+        <option value="الإيراد الكلي والمرونات الخمس">القسم 1: الإيراد الكلي والمرونات الخمس (12 سؤالاً)</option>
+        <option value="الإيراد الحدي (MR)">القسم 2: الإيراد الحدي MR (9 أسئلة)</option>
+        <option value="مرونة القوس (Arc Elasticity)">القسم 3: مرونة القوس (سؤالان)</option>
+        <option value="مرونة النقطة (Point Elasticity)">القسم 4: مرونة النقطة (11 سؤالاً)</option>
+      </select>
+    </div>
+
+    <div class="start-options">
+      <label class="check-label">
+        <input type="checkbox" id="shuffleCheck" />
+        خلط ترتيب الأسئلة
+      </label>
+      <label class="check-label">
+        <input type="checkbox" id="shuffleOptsCheck" />
+        خلط الاختيارات (أ، ب، ج، د)
+      </label>
+    </div>
+
+    <button class="main-btn" onclick="startQuiz()">ابدأ الاختبار الآن 🚀</button>
+  </div>
+
+  <!-- 2. شاشة الأسئلة (سؤال ورا سؤال بالسرة) -->
+  <div class="screen-card hidden" id="screenQuiz">
+    <div class="quiz-meta">
+      <span id="qCounter">السؤال 1 من 34</span>
+      <span id="qCategory">القسم</span>
+      <span id="liveScore">الصح: 0 | الخطأ: 0</span>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="question-title" id="qText"></div>
+
+    <div class="options-container" id="optionsContainer"></div>
+
+    <!-- رسالة المدح أو الرزالة -->
+    <div class="feedback-banner" id="feedbackBanner"></div>
+
+    <!-- الشرح من الملزمة -->
+    <div class="explain-card" id="explainCard"></div>
+
+    <!-- التلميح وزر التالي -->
+    <div class="quiz-footer">
+      <button class="hint-btn" onclick="toggleHint()">💡 انطيني تلميح</button>
+      <button class="main-btn hidden" id="nextBtn" onclick="goNextQuestion()">السؤال التالي ⬅️</button>
+      <div class="hint-box" id="hintBox"></div>
+    </div>
+  </div>
+
+  <!-- 3. شاشة النتيجة النهائية واللقب -->
+  <div class="screen-card result-screen hidden" id="screenResult">
+    <div class="status-badge" id="statusBadge">ناجح</div>
+    <div class="big-score" id="finalPct">100%</div>
+    <div class="score-sub" id="scoreDetails">أجبت بشكل صحيح على 34 من أصل 34 سؤال</div>
+
+    <div class="rank-box">
+      <div class="rank-title" id="rankTitle">اللقب</div>
+      <div class="rank-desc" id="rankDesc">الوصف</div>
+    </div>
+
+    <div class="result-buttons">
+      <button class="main-btn" onclick="openReviewScreen('all')">📋 مراجعة الأسئلة والإجابات</button>
+      <button class="main-btn secondary" id="retryWrongBtn" onclick="startRetryWrong()">🛠️ إعادة الأسئلة الخاطئة فقط</button>
+      <button class="main-btn secondary" onclick="restartFullQuiz()">🔄 إعادة الاختبار من البداية</button>
+    </div>
+  </div>
+
+  <!-- 4. شاشة مراجعة الأسئلة والإجابات -->
+  <div class="screen-card hidden" id="screenReview">
+    <div class="review-header">
+      <h2>📋 مراجعة الأسئلة والإجابات</h2>
+      <button class="main-btn secondary" onclick="backToResult()">🔙 العودة للنتيجة واللقب</button>
+    </div>
+    <div class="filter-tabs">
+      <button class="filter-tab active" id="tabAll" onclick="openReviewScreen('all')">الكل</button>
+      <button class="filter-tab" id="tabWrong" onclick="openReviewScreen('wrong')">الأخطاء فقط ❌</button>
+      <button class="filter-tab" id="tabCorrect" onclick="openReviewScreen('correct')">الصحيحة فقط ✅</button>
+    </div>
+    <div class="review-list" id="reviewList"></div>
+    <div style="margin-top: 22px; text-align: center;">
+      <button class="main-btn secondary" onclick="backToResult()">🔙 العودة للنتيجة واللقب</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // دالة الرياضيات لكتابة الكسور (بسط ومقام)
+  function frac(num, den) {
+    return `<span class="math-frac"><span class="num">${num}</span><span class="den">${den}</span></span>`;
+  }
+  function m(expr) {
+    return `<span class="math-expr">${expr}</span>`;
+  }
+
+  // عبارات المدح والرزايل بالعراقي
+  const praises = [
+    "عاشوا والله! دماغك يوزن بلد يا بطل 🔥👏",
+    "لك عيني صدك جذب! آدم سميث لو يشوفك يصفكلك بالزاوية 👑",
+    "سبع والله سبع! هيج القراية المضبوطة لو بلاش ✨💪",
+    "كفو منك! الاقتصاد بيدك بأمان والامتياز يناديك 🚀",
+    "ايبااااه! جواب يقرا ألف، مسيطر على المادة بالطول والعرض 😎🔥",
+    "عيني باردة عليك! تركيز فولاذي وجواب بالملي 🎯",
+    "والله عمي خوش قاري! استمر هيج والدرجة الكاملة بالجيب 💯",
+    "يا أخي انت فلتة! حتى منحنى الطلب ابتسم من جوابك 😄📈"
+  ];
+
+  const roasts = [
+    "هاي شنو يمعود؟! ركز شوية لا تجيب العيد بالامتحان 😂🤦‍♂️",
+    "رحمة لوالديك عوف التليفون واقرأ السؤال زين، وين رايح؟! 💀",
+    "آدم سميث لو عايش جان اعتزل الاقتصاد وفتح عربانة لبلبي على هالجواب 😭",
+    "ها يابه؟ وين جنت صافن من قريت الملزمة؟ اصحى وياي! 🚨",
+    "يمعود المرونة انصدمت من جوابك! اقرأ الشرح جوه لا تعيدها 🌚💔",
+    "لا بربك؟! يعني عفت كل الاختيارات الصح وجلبّت بهذا؟ 😂",
+    "على كيفك ويانا يالربع، الجواب بصفحة وانت بغير كوكب! ركز 🧐",
+    "خوش رفسة للمنطق الاقتصادي! شوف الشرح جوه وتعلم من الغلط 😅"
+  ];
+
+  // الأسئلة الـ 34 الشاملة
+  const allQuestions = [
+    {
+      id: 1,
+      cat: "الإيراد الكلي والمرونات الخمس",
+      q: "يمكن التوصل إلى منحنى طلب السوق لسلعة معينة من خلال:",
+      options: [
+        "طرح منحنيات الطلب الفردي",
+        "مجموع طلب الأفراد على نفس السلعة",
+        "قسمة السعر على الكمية المطلوبة",
+        "ليس ما سبق"
+      ],
+      correct: 1,
+      hint: "تذكر المثال الخاص بالطلب الفردي في بداية الملزمة.",
+      explanation: "من الممكن التوصل إلى منحنى طلب السوق لسلعة معينة من خلال معرفة مجموع منحنيات الطلب الفردي على نفس السلعة."
+    },
+    {
+      id: 2,
+      cat: "الإيراد الكلي والمرونات الخمس",
+      q: "يمكن الحصول على الإيراد الكلي (TR) الذي يحققه المشروع من خلال:",
+      options: [
+        "قسمة الكمية المطلوبة (Q) على السعر (P)",
+        "حاصل ضرب الكمية المطلوبة (Q) في سعر وحدة السلعة (P)",
+        "جمع الكمية المطلوبة (Q) مع السعر (P)",
+        "ليس ما ذكر"
+      ],
+      correct: 1,
+      hint: "الإيراد يأتي من كمية ما نبيعه مضروباً في سعره.",
+      explanation: "الإيراد الكلي (TR) يمثل حاصل ضرب الكمية المطلوبة (Q) أو المباعة في سعر وحدة السلعة (P)."
+    },
+    {
+      id: 3,
+      cat: "الإيراد الكلي والمرونات الخمس",
+      q: `عند ارتفاع سعر السلعة ذات طلب عالي المرونة ${m("(Ed > 1)")} فإن الإيراد الكلي:`,
+      options: [
+        "ينخفض",
+        "يبقى ثابت",
+        "يرتفع",
+        "ينخفض إلى الصفر"
+      ],
+      correct: 0,
+      hint: "الطلب المرن يستجيب بقوة عكسية للسعر.",
+      explanation: "في حالة الطلب عالي المرونة، ارتفاع السعر يؤدي إلى انخفاض الإيراد الكلي لأن التغير بالكمية المطلوبة أكبر من التغير بالسعر."
+    },
+    {
+      id: 4,
+      cat: "الإيراد الكلي والمرونات الخمس",
+      q: `في حالة الطلب عالي المرونة ${m("(Ed > 1)")}، يؤدي انخفاض السعر إلى زيادة الإيراد الكلي لأن:`,
+      options: [
+        "التغير بالكمية المطلوبة أقل من التغير بالسعر",
+        "التغير بالكمية المطلوبة أكبر من التغير بالسعر",
+        "التغير بالكمية المطلوبة يساوي التغير بالسعر",
+        "الكمية المطلوبة ثابتة"
+      ],
+      correct: 1,
+      hint: "المرونة العالية تعني استجابة كبيرة جداً في الكمية.",
+      explanation: "يؤدي انخفاض السعر لزيادة الإيراد في الطلب عالي المرونة لأن التغير (الزيادة) في الكمية المطلوبة أكبر من التغير (الانخفاض) بالسعر."
+    },
+    {
+      id: 5,
+      cat: "الإيراد الكلي والمرونات الخمس",
+      q: `عند ارتفاع سعر السلعة قليلة المرونة ${m("(Ed < 1)")} فإن الإيراد الكلي:`,
+      options: [
+        "ينخفض",
+        "يبقى ثابت",
+        "يرتفع",
+        "ليس ما سبق"
+      ],
+      correct: 2,
+      hint: "في المرونة القليلة، المستهلك لا يغير كميته كثيراً، فيستفيد البائع من رفع السعر.",
+      explanation: "ارتفاع السعر في السلعة قليلة المرونة يؤدي إلى ارتفاع الإيراد الكلي، لأن التغير (الانخفاض) بالكمية المطلوبة أقل من التغير (الارتفاع) بالسعر."
+    },
+    {
+      id: 6,
+      cat: "الإيراد الكلي والمرونات الخمس",
+      q: `عند ارتفاع أو انخفاض سعر السلعة ذات طلب أحادي (متكافئ) المرونة ${m("(Ed = 1)")} فإن الإيراد الكلي:`,
+      options: [
+        "يرتفع",
+        "ينخفض",
+        "لا يتغير (يبقى ثابت)",
+        "يزداد بصورة لا نهائية"
+      ],
+      correct: 2,
+      hint: "متكافئ يعني أن نسبة التغير متساوية من الطرفين.",
+      explanation: "في الطلب أحادي المرونة لا يتأثر الإيراد الكلي بتغير السعر لأن التغير بالكمية المطلوبة يساوي تماماً التغير بالسعر."
+    },
+    {
+      id: 7,
+      cat: "الإيراد الكلي والمرونات الخمس",
+      q: "عندما يكون التغير بالكمية المطلوبة مساوياً للتغير بالسعر، فإن تغير السعر لا يؤدي إلى تغير في الإيراد الكلي، وتكون درجة المرونة:",
+      options: [
+        `${m("Ed > 1")}`,
+        `${m("Ed < 1")}`,
+        `${m("Ed = 1")}`,
+        `${m("Ed = 0")}`
+      ],
+      correct: 2,
+      hint: "تساوي التغيرات يرمز له برقم واحد.",
+      explanation: `المرونة تكون متكافئة ${m("(Ed = 1)")} عندما يكون التغير في الكمية المطلوبة مساوياً للتغير في السعر.`
+    },
+    {
+      id: 8,
+      cat: "الإيراد الكلي والمرونات الخمس",
+      q: `عند ارتفاع سعر السلعة ذات طلب عديم المرونة ${m("(Ed = 0)")} فإن الإيراد الكلي:`,
+      options: [
+        "ينخفض",
+        "يبقى ثابت",
+        "يرتفع",
+        "ينخفض إلى الصفر"
+      ],
+      correct: 2,
+      hint: "عديم المرونة يعني أن الكمية تُشترى دائماً، فزيادة السعر تزيد الإيراد.",
+      explanation: "في الطلب عديم المرونة، ارتفاع السعر يؤدي إلى ارتفاع الإيراد الكلي لأن الكمية المطلوبة ثابتة لا تستجيب للسعر."
+    },
+    {
+      id: 9,
+      cat: "الإيراد الكلي والمرونات الخمس",
+      q: `في حالة الطلب عديم المرونة ${m("(Ed = 0)")}، يؤدي انخفاض السعر إلى انخفاض الإيراد الكلي لأن:`,
+      options: [
+        "الكمية المطلوبة تستجيب بصورة لا نهائية",
+        "الكمية المطلوبة ثابتة ولا تستجيب للتغير في السعر",
+        "التغير في الكمية أكبر من التغير في السعر",
+        "ليس ما سبق"
+      ],
+      correct: 1,
+      hint: "عدم وجود مرونة يعني الجمود في الكمية.",
+      explanation: "لأن الكمية المطلوبة ثابتة (لا تتغير أبداً)، فإن أي انخفاض في السعر سيقلل الإيراد الكلي مباشرة."
+    },
+    {
+      id: 10,
+      cat: "الإيراد الكلي والمرونات الخمس",
+      q: `عند ارتفاع سعر السلعة ذات طلب لا نهائي المرونة ${m("(Ed = ∞)")} فإن الإيراد الكلي:`,
+      options: [
+        "يرتفع",
+        "يبقى ثابت",
+        "ينخفض إلى الصفر",
+        "ليس ما سبق"
+      ],
+      correct: 2,
+      hint: "في هذه الحالة النادرة، أي رفع بسيط للسعر يجعل الناس يتركون السلعة تماماً.",
+      explanation: "لأن الكمية تستجيب بصورة لانهائية، فأي ارتفاع في السعر يؤدي إلى انخفاض الإيراد الكلي إلى الصفر."
+    },
+    {
+      id: 11,
+      cat: "الإيراد الكلي والمرونات الخمس",
+      q: `عند انخفاض سعر السلعة ذات طلب لا نهائي المرونة ${m("(Ed = ∞)")} فإن الإيراد الكلي:`,
+      options: [
+        "ينخفض إلى الصفر",
+        "يبقى ثابت",
+        "يرتفع (يزداد) بصورة لا نهائية",
+        "ينخفض بنسبة قليلة"
+      ],
+      correct: 2,
+      hint: "السعر انخفض؟ الكمية ستطير للسماء.",
+      explanation: "انخفاض السعر يؤدي إلى زيادة الإيراد بصورة لا نهائية؛ لأن الكمية المطلوبة تستجيب بصورة لا نهائية."
+    },
+    {
+      id: 12,
+      cat: "الإيراد الكلي والمرونات الخمس",
+      q: "الدرجة النادرة من المرونة التي تفترض أن المستهلكين يمكنهم شراء أي كمية من السلعة والبائع يمكنه بيع أي كمية بسعر معطى هي:",
+      options: [
+        `طلب عديم المرونة ${m("(Ed = 0)")}`,
+        `طلب أحادي المرونة ${m("(Ed = 1)")}`,
+        `طلب لا نهائي المرونة ${m("(Ed = ∞)")}`,
+        `طلب قليل المرونة ${m("(Ed < 1)")}`
+      ],
+      correct: 2,
+      hint: "هذه الحالة نظرية بحتة وتُعتبر نادرة جداً في الواقع.",
+      explanation: `إنها حالة الطلب لا نهائي المرونة ${m("(Ed = ∞)")} التي تمثل وضعاً استثنائياً يمكن فيه بيع/شراء أي كمية بالسعر نفسه.`
+    },
+    {
+      id: 13,
+      cat: "الإيراد الحدي (MR)",
+      q: "إذا ازداد الناتج (الكمية المباعة) بمقدار وحدة واحدة فقط، فإن التغير في الإيراد الكلي يمثل:",
+      options: [
+        "الإنفاق الكلي",
+        "الإيراد الحدي (MR)",
+        "الناتج الحدي",
+        "السعر"
+      ],
+      correct: 1,
+      hint: "كلمة (حدي) تعني التغير الإضافي الأخير.",
+      explanation: "يُعرّف الإيراد الحدي (MR) بأنه مقدار التغير في الإيراد الكلي مقسوماً على التغير المقابل في الناتج بوحدة واحدة."
+    },
+    {
+      id: 14,
+      cat: "الإيراد الحدي (MR)",
+      q: `في ظروف المنافسة التامة، يستطيع المشروع بيع أية وحدات إضافية بالسعر السائد في السوق، وعندئذ يكون التغير في السعر ${m("(ΔP)")} مساوياً لـ:`,
+      options: [
+        "واحد صحيح",
+        "صفر",
+        "الإيراد الكلي",
+        "ما لا نهاية"
+      ],
+      correct: 1,
+      hint: "لأن السعر (سائد) ولا يحتاج المنتج لتخفيضه ليبيع أكثر.",
+      explanation: `لأن السعر ثابت ومحدد سلفاً في السوق التنافسي التام، فإن التغير فيه يكون صفراً ${m("(ΔP = 0)")}.`
+    },
+    {
+      id: 15,
+      cat: "الإيراد الحدي (MR)",
+      q: `في ظروف المنافسة التامة (حيث ${m("ΔP = 0")})، فإن الإيراد الحدي (MR) يكون:`,
+      options: [
+        "أكبر من سعر وحدة السلعة",
+        "أصغر من سعر وحدة السلعة",
+        "هو نفسه سعر وحدة السلعة (MR = P)",
+        "يساوي صفر"
+      ],
+      correct: 2,
+      hint: "بما أنك تبيع كل وحدة إضافية بنفس السعر، فالإيراد الإضافي هو نفسه السعر.",
+      explanation: "يصبح الإيراد الحدي في المنافسة التامة مطابقاً تماماً لسعر وحدة السلعة لأن السعر لا يقل."
+    },
+    {
+      id: 16,
+      cat: "الإيراد الحدي (MR)",
+      q: "في حالات السوق خارج المنافسة التامة، عندما يلجأ المشروع إلى تخفيض السعر لزيادة المبيعات، فإن:",
+      options: [
+        "السعر يصبح أكبر من الإيراد الحدي (P > MR)",
+        "السعر يصبح أقل من الإيراد الحدي (P < MR)",
+        "السعر يساوي الإيراد الحدي (P = MR)",
+        "الإيراد الحدي يساوي الإيراد الكلي"
+      ],
+      correct: 0,
+      hint: "لتبيع أكثر ستخفض السعر، فكل وحدة جديدة ستضيف إيراداً أقل من السعر الذي قبلها.",
+      explanation: "مادام المشروع يخفض السعر لزيادة المبيعات فإن الإيراد الإضافي سيكون أقل، أي أن السعر يصبح أكبر من الإيراد الحدي."
+    },
+    {
+      id: 17,
+      cat: "الإيراد الحدي (MR)",
+      q: "إن العلاقة بين الإيراد الكلي (TR) والإيراد الحدي (MR) تكون متماثلة مع العلاقة بين:",
+      options: [
+        "السعر والكمية المطلوبة",
+        "الناتج الكلي والناتج الحدي",
+        "مرونة القوس ومرونة النقطة",
+        "ليس ما ذكر"
+      ],
+      correct: 1,
+      hint: "الكل إلى الجزء، والحدي إلى الكلي.",
+      explanation: "ذكرت الملزمة أن العلاقة بين الإيراد الكلي والحدي هي نفس منطق العلاقة بين الناتج الكلي والناتج الحدي."
+    },
+    {
+      id: 18,
+      cat: "الإيراد الحدي (MR)",
+      q: "يمكن التعبير عن الصيغة النهائية للعلاقة بين الإيراد الحدي (MR) ومرونة الطلب السعرية (Ed) من خلال المعادلة:",
+      options: [
+        `MR = P [ 1 + (${frac("1", "Ed")}) ]`,
+        `MR = P [ 1 - (${frac("1", "Ed")}) ]`,
+        `MR = Ed [ 1 - (${frac("1", "P")}) ]`,
+        "ليس ما سبق"
+      ],
+      correct: 1,
+      hint: "المعادلة تحتوي على إشارة ناقص وليس زائد.",
+      explanation: `الصيغة النهائية هي MR = P [ 1 - (${frac("1", "Ed")}) ] كما نصت عليها الملزمة.`
+    },
+    {
+      id: 19,
+      cat: "الإيراد الحدي (MR)",
+      q: `إذا كان سعر السلعة ${m("(P = 4)")} ومرونة الطلب السعرية ${m("(Ed = 2)")}، فإن الإيراد الحدي (MR) يساوي:`,
+      options: [
+        "صفر",
+        "2 (موجب)",
+        "4",
+        "-16"
+      ],
+      correct: 1,
+      hint: `عوّض في القانون: MR = 4 × (1 - ${frac("1", "2")})`,
+      explanation: `MR = 4 [1 - 0.5] = 4 × 0.5 = 2. الإيراد الحدي موجب لأن الطلب مرن.`
+    },
+    {
+      id: 20,
+      cat: "الإيراد الحدي (MR)",
+      q: `إذا كان سعر السلعة ${m("(P = 4)")} وكان الطلب أحادي المرونة ${m("(Ed = 1)")}، فإن الإيراد الحدي (MR) يساوي:`,
+      options: [
+        "4",
+        "1",
+        "صفر",
+        "-4"
+      ],
+      correct: 2,
+      hint: `القوس سيصبح (1 - 1) = صفر.`,
+      explanation: `في الطلب أحادي المرونة يكون الإيراد الحدي دائماً صفراً. MR = 4 [1 - 1] = 0.`
+    },
+    {
+      id: 21,
+      cat: "الإيراد الحدي (MR)",
+      q: `إذا كان سعر السلعة ${m("(P = 4)")} وكان الطلب قليل المرونة ${m("(Ed = 0.2)")}، فإن الإيراد الحدي (MR) يساوي:`,
+      options: [
+        "2",
+        "صفر",
+        "-16 (سالب)",
+        "16"
+      ],
+      correct: 2,
+      hint: `مقلوب الـ 0.2 هو 5. يعني (1 - 5) = -4.`,
+      explanation: `MR = 4 [1 - (1 / 0.2)] = 4 [1 - 5] = 4 × (-4) = -16. الإيراد الحدي سالب في الطلب قليل المرونة.`
+    },
+    {
+      id: 22,
+      cat: "مرونة القوس (Arc Elasticity)",
+      q: "المقياس الذي يمثل قياس المرونة بين نقطتين محددتين على منحنى طلب معين ويستخدم للتغيرات الكبيرة هو:",
+      options: [
+        "مرونة النقطة",
+        "مرونة القوس",
+        "المرونة التقاطعية",
+        "المرونة الدخلية"
+      ],
+      correct: 1,
+      hint: "يعبر عن جزء أو قوس من المنحنى.",
+      explanation: "تمثل مرونة القوس قياس المرونة بين نقطتين محددتين على المنحنى للتغيرات الكبيرة (مثل النقطة j إلى k)."
+    },
+    {
+      id: 23,
+      cat: "مرونة القوس (Arc Elasticity)",
+      q: "إذا انقلب اتجاه التغير في سعر السلعة عند التحرك بين نفس النقطتين على منحنى الطلب، فإن معامل مرونة القوس:",
+      options: [
+        "يظل ثابتاً كما هو",
+        "يتغير ويختلف باختلاف اتجاه التغير في السعر",
+        "يصبح مساوياً للصفر دائماً",
+        "يصبح مساوياً للواحد الصحيح"
+      ],
+      correct: 1,
+      hint: "حساب من النقطة A إلى B يعطي رقماً مختلفاً عن الحساب من B إلى A.",
+      explanation: "يختلف معامل مرونة القوس بين نفس النقطتين إذا انقلب اتجاه التغير في سعر السلعة لأن الأساس (P1, Q1) سيتغير."
+    },
+    {
+      id: 24,
+      cat: "مرونة النقطة (Point Elasticity)",
+      q: "عندما تكون تركيبة التغير في السعر والكمية المطلوبة متناهية في الصغر (تغير طفيف في السعر)، فإن المقياس المستخدم هو:",
+      options: [
+        "مرونة القوس",
+        "مرونة النقطة",
+        "الإيراد الحدي",
+        "ليس ما سبق"
+      ],
+      correct: 1,
+      hint: "قياس لشيء دقيق جداً كأنه نقطة واحدة.",
+      explanation: "تستخدم فكرة مرونة النقطة عندما يكون التغير في السعر متناهياً في الصغر (تغير طفيف)، وهي تماثل قياس المرونة في نقطة واحدة."
+    },
+    {
+      id: 25,
+      cat: "مرونة النقطة (Point Elasticity)",
+      q: "يمكن الحصول على مرونة النقطة (Ep) رياضياً من خلال الصيغة:",
+      options: [
+        `${m("(∂P / ∂Q) × (Q / P)")}`,
+        `${m("(∂Q / ∂P) × (P / Q)")}`,
+        `${m("(∂Q / ∂P) + (P / Q)")}`,
+        "ليس ما ذكر"
+      ],
+      correct: 1,
+      hint: "دائماً التغير في الكمية على التغير في السعر أولاً.",
+      explanation: `تُعبّر مرونة النقطة رياضياً بالصيغة: Ep = ${frac("∂Q", "∂P")} × ${frac("P", "Q")} حيث عوّضت المشتقة بدلاً من نسبة التغير.`
+    },
+    {
+      id: 26,
+      cat: "مرونة النقطة (Point Elasticity)",
+      q: `في صيغة مرونة النقطة، فإن المقدار ${m("(∂Q / ∂P)")} يمثل المشتقة ويعبر عن:`,
+      options: [
+        "الإيراد الكلي للمشروع",
+        "انحدار خط الطلب",
+        "اتجاه التغير في الدخل",
+        "مرونة القوس"
+      ],
+      correct: 1,
+      hint: "الميل والانحدار الرياضي للخط.",
+      explanation: `تمثل المشتقة ${m("(∂Q / ∂P)")} هندسياً درجة انحدار معينة لخط الطلب.`
+    },
+    {
+      id: 27,
+      cat: "مرونة النقطة (Point Elasticity)",
+      q: "من الناحية الهندسية، فإن المرونة السعرية لنقطة معينة على منحنى طلب خطي تساوي:",
+      options: [
+        "نسبة الجزء الأيسر إلى الجزء الأيمن من خط الطلب",
+        "نسبة الجزء الأيمن إلى الجزء الأيسر من خط الطلب",
+        "حاصل ضرب الجزء الأيمن في الجزء الأيسر",
+        "ليس ما سبق"
+      ],
+      correct: 1,
+      hint: "نقسم الجزء المتبقي على اليمين على الجزء المنقضي على اليسار.",
+      explanation: "هندسياً، مرونة النقطة تساوي نسبة الجزء الأيمن إلى الجزء الأيسر من خط الطلب."
+    },
+    {
+      id: 28,
+      cat: "مرونة النقطة (Point Elasticity)",
+      q: "إن منحنى الطلب ذو الخط المستقيم تكون درجات المرونة عليه:",
+      options: [
+        "ثابتة في جميع النقاط",
+        "مختلفة باختلاف موقع النقاط عليه",
+        "مساوية للواحد الصحيح في كل النقاط",
+        "عديمة المرونة دائماً"
+      ],
+      correct: 1,
+      hint: "تتغير المرونة كلما تحركنا صعوداً أو نزولاً على نفس الخط.",
+      explanation: "يُلاحظ أن الطلب ذو الخط المستقيم له مرونات مختلفة باختلاف موقع النقاط عليه من اللانهائي إلى الصفر."
+    },
+    {
+      id: 29,
+      cat: "مرونة النقطة (Point Elasticity)",
+      q: "على خط الطلب المستقيم، عند النقطة التي تقع على المحور الأفقي (محور الكمية، حيث الجزء الأيمن يساوي صفر)، تكون درجة المرونة:",
+      options: [
+        `${m("Ed = ∞")}`,
+        `${m("Ed = 1")}`,
+        `${m("Ed = 0")}`,
+        `${m("Ed > 1")}`
+      ],
+      correct: 2,
+      hint: "اذا كان البسط (الجزء الأيمن) صفراً فإن الناتج صفر.",
+      explanation: "عندما تلامس النقطة محور الكميات فإن الجزء الأيمن ينعدم (صفر)، وبالتالي تكون المرونة صفراً (عديم المرونة)."
+    },
+    {
+      id: 30,
+      cat: "مرونة النقطة (Point Elasticity)",
+      q: "على خط الطلب المستقيم، عند النقطة التي تقع في منتصف الخط تماماً (حيث الجزء الأيمن يساوي الجزء الأيسر)، تكون درجة المرونة:",
+      options: [
+        `${m("Ed = 0")}`,
+        `${m("Ed = 1")}`,
+        `${m("Ed < 1")}`,
+        `${m("Ed = ∞")}`
+      ],
+      correct: 1,
+      hint: "أي عدد يقسم على نفسه يعطي هذا الرقم.",
+      explanation: "في منتصف خط الطلب يتساوى الجزء الأيمن والأيسر وتكون المرونة مساوية لواحد (أحادي أو متكافئ المرونة)."
+    },
+    {
+      id: 31,
+      cat: "مرونة النقطة (Point Elasticity)",
+      q: "على خط الطلب المستقيم، عند النقطة التي تلتقي مع المحور العمودي (محور السعر، حيث الجزء الأيسر يساوي صفر)، تكون درجة المرونة:",
+      options: [
+        `${m("Ed = 0")}`,
+        `${m("Ed = 1")}`,
+        `${m("Ed = ∞")}`,
+        `${m("Ed < 1")}`
+      ],
+      correct: 2,
+      hint: "القسمة على صفر رياضياً تعني اللانهاية.",
+      explanation: "عند التقاء النقطة بمحور السعر يكون الجزء الأيسر صفراً، والقسمة على صفر تعطي نتيجة لا نهائية المرونة."
+    },
+    {
+      id: 32,
+      cat: "مرونة النقطة (Point Elasticity)",
+      q: "على خط الطلب المستقيم، إذا كان الجزء الأيمن للنقطة يساوي (15) والجزء الأيسر يساوي (5)، فإن معامل مرونة النقطة يكون:",
+      options: [
+        "0.3",
+        "3",
+        "1",
+        "0"
+      ],
+      correct: 1,
+      hint: "اقسم 15 على 5.",
+      explanation: `تطبيق مباشر للقانون الهندسي: المرونة = ${frac("الجزء الأيمن", "الجزء الأيسر")} = ${frac("15", "5")} = 3.`
+    },
+    {
+      id: 33,
+      cat: "مرونة النقطة (Point Elasticity)",
+      q: "على خط الطلب المستقيم، إذا كان الجزء الأيمن للنقطة يساوي (5) والجزء الأيسر يساوي (15)، فإن نوع درجة مرونة الطلب السعرية:",
+      options: [
+        "قليل المرونة (Ed < 1)",
+        "متكافئ المرونة (Ed = 1)",
+        "عديم المرونة (Ed = 0)",
+        "عالي المرونة (Ed > 1)"
+      ],
+      correct: 0,
+      hint: "5 تقسيم 15 يساوي 0.33 وهو أقل من واحد.",
+      explanation: `المرونة = ${frac("5", "15")} = 0.33. النتيجة أقل من 1، فالطلب يُسمى قليل المرونة.`
+    },
+    {
+      id: 34,
+      cat: "مرونة النقطة (Point Elasticity)",
+      q: "عندما يكون منحنى الطلب غير خطي، فإن قياس مرونة النقطة يستلزم:",
+      options: [
+        "تطبيق قانون مرونة القوس فقط",
+        "رسم خط مماس لمنحنى الطلب في النقطة المراد قياس مرونتها",
+        "جمع السعر مع الكمية المطلوبة",
+        "ليس ما ذكر"
+      ],
+      correct: 1,
+      hint: "المنحنى يحتاج إلى خط مستقيم ملامس له لتطبيق قوانين الجزء الأيمن والأيسر.",
+      explanation: "لقياس مرونة النقطة على منحنى غير خطي، نقوم برسم مماس للمنحنى عند تلك النقطة، وتصبح مرونة النقطة مساوية لمرونة ذلك الخط المماس."
+    }
+  ];
+
+  let quizList = [];
+  let currentIdx = 0;
+  let userChoices = {}; // { questionId: chosenOriginalIndex }
+  let soundOn = true;
+  let currentTheme = "dark";
+  let currentReviewFilter = "all";
+
+  // مؤثرات صوتية
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  function playSound(type) {
+    if (!soundOn) return;
+    try {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      if (type === 'correct') {
+        osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+        osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.08);
+        osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.16);
+        gain.gain.setValueAtTime(0.11, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.32);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.32);
+      } else {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(210, audioCtx.currentTime);
+        osc.frequency.setValueAtTime(145, audioCtx.currentTime + 0.14);
+        gain.gain.setValueAtTime(0.11, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.3);
+      }
+    } catch (e) {}
+  }
+
+  // التحكم بالثيمات
+  function cycleTheme() {
+    const themes = ['dark', 'eyecare', 'light'];
+    currentTheme = themes[(themes.indexOf(currentTheme) + 1) % themes.length];
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    const btn = document.getElementById('themeBtn');
+    if (currentTheme === 'dark') btn.innerText = '🌙 الثيم: داكن أساسي';
+    else if (currentTheme === 'eyecare') btn.innerText = '☕ الثيم: مريح للعين';
+    else btn.innerText = '☀️ الثيم: نهاري هادئ';
+  }
+
+  function toggleSound() {
+    soundOn = !soundOn;
+    document.getElementById('soundBtn').innerText = soundOn ? '🔊 الصوت: مفعل' : '🔇 الصوت: مكتوم';
+  }
+
+  // إظهار شاشة واحدة وإخفاء الباقي
+  function showScreen(screenId) {
+    ['screenStart', 'screenQuiz', 'screenResult', 'screenReview'].forEach(id => {
+      document.getElementById(id).classList.add('hidden');
+    });
+    document.getElementById(screenId).classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // بدء الاختبار من شاشة البداية
+  function startQuiz() {
+    const selectedCat = document.getElementById('categorySelect').value;
+    const shouldShuffleQ = document.getElementById('shuffleCheck').checked;
+    const shouldShuffleOpts = document.getElementById('shuffleOptsCheck').checked;
+
+    let filtered = selectedCat === 'all'
+      ? [...allQuestions]
+      : allQuestions.filter(q => q.cat === selectedCat);
+
+    if (shouldShuffleQ) {
+      filtered.sort(() => Math.random() - 0.5);
+    }
+
+    // تجهيز الاختيارات (مع دعم خلط الاختيارات إن تم تفعيله)
+    quizList = filtered.map(q => {
+      let optOrder = [0, 1, 2, 3];
+      if (shouldShuffleOpts) {
+        optOrder.sort(() => Math.random() - 0.5);
+      }
+      return { ...q, optOrder };
+    });
+
+    currentIdx = 0;
+    userChoices = {};
+    showScreen('screenQuiz');
+    renderCurrentQuestion();
+  }
+
+  // عرض السؤال الحالي بالسرة
+  function renderCurrentQuestion() {
+    const q = quizList[currentIdx];
+    const total = quizList.length;
+
+    let cCount = 0, wCount = 0;
+    quizList.forEach(item => {
+      if (userChoices[item.id] !== undefined) {
+        if (userChoices[item.id] === item.correct) cCount++;
+        else wCount++;
+      }
+    });
+
+    document.getElementById('qCounter').innerText = `السؤال ${currentIdx + 1} من ${total}`;
+    document.getElementById('qCategory').innerText = q.cat;
+    document.getElementById('liveScore').innerText = `الصح: ${cCount} | الخطأ: ${wCount}`;
+    document.getElementById('progressBar').style.width = `${((currentIdx) / total) * 100}%`;
+
+    document.getElementById('qText').innerHTML = q.q;
+
+    const letters = ['أ', 'ب', 'ج', 'د'];
+    const container = document.getElementById('optionsContainer');
+    container.innerHTML = '';
+
+    const order = q.optOrder || [0, 1, 2, 3];
+    order.forEach((origIdx, displayIdx) => {
+      const btn = document.createElement('button');
+      btn.className = 'opt-btn';
+      btn.dataset.origIdx = origIdx;
+      btn.innerHTML = `<span class="opt-char">${letters[displayIdx]}</span><span>${q.options[origIdx]}</span>`;
+      btn.onclick = () => handleAnswer(origIdx);
+      container.appendChild(btn);
+    });
+
+    // إخفاء عناصر ما بعد الإجابة
+    document.getElementById('feedbackBanner').className = 'feedback-banner';
+    document.getElementById('feedbackBanner').innerHTML = '';
+    document.getElementById('explainCard').style.display = 'none';
+    document.getElementById('hintBox').style.display = 'none';
+    document.getElementById('hintBox').innerHTML = `<strong>💡 تلميح:</strong> ${q.hint}`;
+    document.getElementById('nextBtn').classList.add('hidden');
+  }
+
+  // عند اختيار الإجابة
+  function handleAnswer(selectedOrigIdx) {
+    const q = quizList[currentIdx];
+    if (userChoices[q.id] !== undefined) return;
+
+    userChoices[q.id] = selectedOrigIdx;
+    const isCorrect = selectedOrigIdx === q.correct;
+
+    // تلوين الاختيارات وقفلها
+    const buttons = document.querySelectorAll('#optionsContainer .opt-btn');
+    buttons.forEach(btn => {
+      btn.disabled = true;
+      const origIdx = parseInt(btn.dataset.origIdx, 10);
+      if (origIdx === q.correct) btn.classList.add('correct');
+      else if (origIdx === selectedOrigIdx && !isCorrect) btn.classList.add('wrong');
+    });
+
+    // صوت + مدح أو رزالة بالعراقي
+    playSound(isCorrect ? 'correct' : 'wrong');
+    const banner = document.getElementById('feedbackBanner');
+    const pool = isCorrect ? praises : roasts;
+    const msg = pool[Math.floor(Math.random() * pool.length)];
+    banner.className = 'feedback-banner ' + (isCorrect ? 'praise' : 'roast');
+    banner.innerHTML = msg;
+
+    // إظهار الشرح من الملزمة
+    const exp = document.getElementById('explainCard');
+    exp.style.display = 'block';
+    exp.innerHTML = `<strong>📖 الشرح من الملزمة:</strong> ${q.explanation}`;
+
+    // تحديث شريط التقدم والعداد
+    let cCount = 0, wCount = 0;
+    quizList.forEach(item => {
+      if (userChoices[item.id] !== undefined) {
+        if (userChoices[item.id] === item.correct) cCount++;
+        else wCount++;
+      }
+    });
+    document.getElementById('liveScore').innerText = `الصح: ${cCount} | الخطأ: ${wCount}`;
+    document.getElementById('progressBar').style.width = `${((currentIdx + 1) / quizList.length) * 100}%`;
+
+    // إظهار زر السؤال التالي (أو النتيجة إذا كان السؤال الأخير)
+    const nextBtn = document.getElementById('nextBtn');
+    nextBtn.innerText = currentIdx === quizList.length - 1 ? 'عرض النتيجة واللقب 🏆' : 'السؤال التالي ⬅️';
+    nextBtn.classList.remove('hidden');
+  }
+
+  function toggleHint() {
+    const box = document.getElementById('hintBox');
+    box.style.display = box.style.display === 'block' ? 'none' : 'block';
+  }
+
+  function goNextQuestion() {
+    if (currentIdx < quizList.length - 1) {
+      currentIdx++;
+      renderCurrentQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      renderResultScreen();
+    }
+  }
+
+  // اختصارات الكيبورد لسرعة الحل
+  document.addEventListener('keydown', (e) => {
+    const quizVisible = !document.getElementById('screenQuiz').classList.contains('hidden');
+    if (!quizVisible) return;
+
+    const q = quizList[currentIdx];
+    const answered = userChoices[q.id] !== undefined;
+
+    if (!answered && ['1', '2', '3', '4'].includes(e.key)) {
+      const idx = parseInt(e.key, 10) - 1;
+      const buttons = document.querySelectorAll('#optionsContainer .opt-btn');
+      if (buttons[idx]) buttons[idx].click();
+    } else if (answered && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      goNextQuestion();
+    } else if (e.key.toLowerCase() === 'h' || e.key === 'أ') {
+      toggleHint();
+    }
+  });
+
+  // 3. عرض النتيجة واللقب بالنهاية
+  function renderResultScreen() {
+    let correctCount = 0;
+    let wrongCount = 0;
+    quizList.forEach(q => {
+      if (userChoices[q.id] === q.correct) correctCount++;
+      else wrongCount++;
+    });
+
+    const total = quizList.length;
+    const pct = Math.round((correctCount / total) * 100);
+    const passed = pct >= 50;
+
+    const badge = document.getElementById('statusBadge');
+    badge.className = 'status-badge ' + (passed ? 'pass' : 'fail');
+    badge.innerText = passed ? '🎉 ناجح ومبيض الوجه' : '💔 راسب (يرادلك قراية بعد)';
+
+    document.getElementById('finalPct').innerText = `${pct}%`;
+    document.getElementById('scoreDetails').innerText = `جاوبت صح على ${correctCount} من أصل ${total} سؤال (الخطأ: ${wrongCount})`;
+
+    let title = '';
+    let desc = '';
+
+    if (pct >= 90) {
+      title = '👑 اللقب: أسطورة الاقتصاد ووزير المالية القادم!';
+      desc = 'عمي انت مو طالب عادي، انت موسوعة اقتصادية تمشي على الكاع! آدم سميث يفتخر بيك، روح للامتحان وانت مغمض 🔥👏';
+    } else if (pct >= 80) {
+      title = '🦈 اللقب: حوت المرونة السعرية!';
+      desc = 'عيني باردة عليك! مسيطر على القوانين والمسائل والرسوم البيانية، بقتلك خطوة زغيرة وتقفل الـ 100 بالامتحان 💪✨';
+    } else if (pct >= 70) {
+      title = '📈 اللقب: اقتصادي مضبوط ومسيطر!';
+      desc = 'عاشت ايدك يا بطل! مستواك كلش حلو وفاهم المادة زين، اضغط على زر مراجعة الأسئلة جوة حتى تضبط كم سؤال الي فاتوك 🎯';
+    } else if (pct >= 60) {
+      title = '😅 اللقب: عابر على الحافة (نفذت بجلدك)!';
+      desc = 'الحمد لله ناجح، بس ترى وضعك مثل مرونة القوس بيه احتمال وقوع بالخطأ! راجع إجاباتك واضبط القوانين أكثر ✌️';
+    } else if (pct >= 50) {
+      title = '🤲 اللقب: ناجح بالدفرات ودعاء الوالدة!';
+      desc = 'يعني عالحديدة! لو سؤال واحد بعد طاير جان رحت بيها، فوت على مراجعة الأسئلة أو عيد أخطاءك لا تتورط بالامتحان 😂';
+    } else if (pct >= 30) {
+      title = '📉 اللقب: ضحية منحنى الطلب (راسب - دور ثاني)!';
+      desc = 'هاي شنو يمعود؟! الإيراد الحدي مالتك بالسالب! كوم سوي جاي وافتح مراجعة الأسئلة واقرأ الشرح سؤال سؤال 🤦‍♂️🚨';
+    } else {
+      title = '💀 اللقب: طلبك عديم المرونة تماماً (Ed = 0)!';
+      desc = 'لا بربك؟! يعني الإيراد الكلي مالتك نزل للصفر! يمعود افتح مراجعة الأسئلة واقرأ الشروحات مال الملزمة زين لا تجيب العيد 😭💔';
+    }
+
+    document.getElementById('rankTitle').innerText = title;
+    document.getElementById('rankDesc').innerText = desc;
+    document.getElementById('retryWrongBtn').style.display = wrongCount > 0 ? 'inline-flex' : 'none';
+
+    showScreen('screenResult');
+  }
+
+  // 4. شاشة مراجعة الأسئلة والإجابات مع الفلتر
+  function openReviewScreen(filter = 'all') {
+    currentReviewFilter = filter;
+    document.getElementById('tabAll').classList.toggle('active', filter === 'all');
+    document.getElementById('tabWrong').classList.toggle('active', filter === 'wrong');
+    document.getElementById('tabCorrect').classList.toggle('active', filter === 'correct');
+
+    const list = document.getElementById('reviewList');
+    list.innerHTML = '';
+    const letters = ['أ', 'ب', 'ج', 'د'];
+
+    let shownCount = 0;
+
+    quizList.forEach((q, idx) => {
+      const userAns = userChoices[q.id];
+      const isRight = userAns === q.correct;
+
+      if (filter === 'wrong' && isRight) return;
+      if (filter === 'correct' && !isRight) return;
+
+      shownCount++;
+      const item = document.createElement('div');
+      item.className = 'review-item ' + (isRight ? 'is-correct' : 'is-wrong');
+
+      let answersHTML = '';
+      if (!isRight && userAns !== undefined) {
+        answersHTML += `<div class="rev-ans user-wrong">❌ إجابتك الخاطئة: (${letters[userAns]}) ${q.options[userAns]}</div>`;
+      }
+      answersHTML += `<div class="rev-ans right-ans">✅ الإجابة الصحيحة: (${letters[q.correct]}) ${q.options[q.correct]}</div>`;
+
+      item.innerHTML = `
+        <div class="rev-top">
+          <span>سؤال ${idx + 1} (${q.cat})</span>
+          <span style="color: ${isRight ? 'var(--correct)' : 'var(--wrong)'}">
+            ${isRight ? 'إجابتك صحيحة ✅' : 'إجابتك خاطئة ❌'}
+          </span>
+        </div>
+        <div class="rev-q">${q.q}</div>
+        ${answersHTML}
+        <div class="rev-exp"><strong>📖 الشرح من الملزمة:</strong> ${q.explanation}</div>
+      `;
+      list.appendChild(item);
+    });
+
+    if (shownCount === 0) {
+      list.innerHTML = `<div style="text-align:center; padding: 24px; color: var(--text-muted); font-weight: 700;">لا توجد أسئلة مطابقة لهذا الفلتر 🎉</div>`;
+    }
+
+    showScreen('screenReview');
+  }
+
+  function backToResult() {
+    showScreen('screenResult');
+  }
+
+  // إعادة الأسئلة الخاطئة فقط بالسرة
+  function startRetryWrong() {
+    const wrongQuestions = quizList.filter(q => userChoices[q.id] !== q.correct);
+    if (wrongQuestions.length === 0) return;
+
+    quizList = wrongQuestions;
+    currentIdx = 0;
+    userChoices = {};
+    showScreen('screenQuiz');
+    renderCurrentQuestion();
+  }
+
+  function restartFullQuiz() {
+    showScreen('screenStart');
+  }
+</script>
+
+</body>
+</html>
